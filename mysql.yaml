@@ -12,3 +12,14 @@
       name: mysqld
       state: started
       enabled: yes
+
+  - name: connect to mysql server
+    community.mysql.mysql_info:
+      login_user: root
+      login_password: ExpenseApp@1
+      login_hosts: 172.31.29.66
+    register: mysql_info
+
+  - name: print the output
+    anisble.builtin.debug:
+      msg: "mysql info: {{mysql_info}}"  
